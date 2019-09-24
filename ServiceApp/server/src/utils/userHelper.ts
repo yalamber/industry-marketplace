@@ -2,23 +2,8 @@ import axios from 'axios';
 import yargs from 'yargs';
 import { faucet, faucetAmount } from '../config.json';
 import { writeData } from './databaseHelper';
-import { generateKeyPair } from './encryptionHelper';
-import { publishDID } from './mamHelper';
 import { generateNewWallet, getBalance } from './walletHelper.js';
-
-const createNewUser = async () => {
-    const { name, role = '', location = '' } = argv;
-    if (name && (role === 'SR' || role === 'SP')) {
-        // Generate key pair
-        const { publicKey, privateKey }: any = await generateKeyPair();
-        const root = await publishDID(publicKey, privateKey);
-        const id = `did:iota:${root}`;
-        return await writeData('user', { id, name, role, location });
-    } else {
-        console.log('Params are missing or wrong');
-        return;
-    }
-};
+import { createNewUser } from './credentialHelper';
 
 const createNewWallet = async () => {
     console.log('Creating wallet...');
@@ -41,7 +26,11 @@ const argv = yargs
     .argv;
 
 if (argv.create === 'user') {
-    createNewUser();
+    console.log("Sup?");
+    const { name, role = '', location = '' } = argv;
+    if (name && (role === 'SR' || role === 'SP')) {
+        createNewUser(name, role, location);
+    }
 } else if (argv.create === 'wallet') {
     createNewWallet();
 } else {
