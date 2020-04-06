@@ -153,6 +153,11 @@ export class AppHelper {
             res.json({ ...user, balance, wallet: address });
         });
 
+        app.get('/allUsers', async (req, res) => {
+            let user: any = await readAllData('user');
+            res.json({ ...user });
+        });
+
         app.get('/mam', async (req, res) => {
             const channelId = req.query.conversationId;
             const mam: any = await readData('mam', channelId);
@@ -183,6 +188,7 @@ export class AppHelper {
                 const tag = buildTag('callForProposal', location, submodelId);
                 const userDID = req.body.frame.sender.identification.id;
                 const id = userDID.replace('did:IOTA:', '')
+                console.log("ID", id)
                 const did: any = await readRow('did', 'root', id)
                 const verifiablePresentation = await CreateAuthenticationPresentation(provider, did);
                 req.body.identification = {};
