@@ -94,16 +94,15 @@ export class AppHelper {
 
         app.post('/createUser', async (req, res) => {
             try {
+                let user
                 const { role, name, location } = req.body;
                 if (name && (role === 'SR' || role === 'SP') && location) {
-                    await createNewUser(name, role, location);
+                   user = await createNewUser(name, role, location);
                 }
                 const wallet: IWallet = await generateNewWallet();
                 fundWallet(wallet)
 
-                res.send({
-                    success: true
-                });
+                res.send({ ...user });
             } catch (error) {
                 console.log('Wallet Error', error);
                 res.send({
@@ -153,11 +152,6 @@ export class AppHelper {
             res.json({ ...user, balance, wallet: address });
         });
 
-        app.get('/allUsers', async (req, res) => {
-            let user: any = await readAllData('user');
-            res.json({ ...user });
-        });
-
         app.get('/mam', async (req, res) => {
             const channelId = req.query.conversationId;
             const mam: any = await readData('mam', channelId);
@@ -188,7 +182,6 @@ export class AppHelper {
                 const tag = buildTag('callForProposal', location, submodelId);
                 const userDID = req.body.frame.sender.identification.id;
                 const id = userDID.replace('did:IOTA:', '')
-                console.log("ID", id)
                 const did: any = await readRow('did', 'root', id)
                 const verifiablePresentation = await CreateAuthenticationPresentation(provider, did);
                 req.body.identification = {};
