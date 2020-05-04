@@ -57,7 +57,7 @@ export default ({ children }) => {
 
                         { children }
 
-                        {/*<Footer />*/}
+                        <Footer />
                     </div>
                 )
             }
