@@ -71,8 +71,8 @@ class App extends Component {
                 <BrowserRouter>
                     {!this.state.status && (
                         <Switch>
-                            <Route path="/" component={HomePage} exact />
-                            <Route path="/demo" component={DemoPage} />
+                            {/*<Route path="/" component={HomePage} exact />*/}
+                            <Route path="/" component={DemoPage} exact />
                             <Route path="/executive_summary" component={ExecutiveSummary} />
                             <Route path="/introduction_to_industry4" component={IntroductionToIndustry4} />
                             <Route path="/benefits_of_iota" component={BenefitsOfIota} />

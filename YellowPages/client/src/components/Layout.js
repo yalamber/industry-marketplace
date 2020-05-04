@@ -7,7 +7,7 @@ import Chapters from './Chapters'
 import Disclaimer from './Disclaimer'
 import Footer from './Footer'
 import '../assets/styles/layout.scss'
-import headerMobileLogo from '../assets/img/landing/logo_mobile.svg';
+import headerMobileLogo from '../assets/img/landing/griot_logo_mobile.svg';
 
 export const MenuContext = React.createContext({});
 
@@ -45,17 +45,19 @@ export default ({ children }) => {
                         <div className="nav" id="nav">
                             <div className="close-nav" onClick={closeNav} />
 
+                            {/*
                             <ExternalMenu
                                 className="nav-external"
                                 pages={externalPages}
                             />
+                            */}
 
                             <Menu onClick={showNav} />
                         </div>
 
                         { children }
 
-                        <Footer />
+                        {/*<Footer />*/}
                     </div>
                 )
             }

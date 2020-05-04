@@ -5,7 +5,7 @@ import { withRouter } from 'react-router'
 import Button from './Button'
 // import DropSelector from './DropSelector'
 // import LanguageContext from '../context/language-context'
-import headerLogo from '../assets/img/landing/logo.svg'
+import headerLogo from '../assets/img/landing/griot_logo.svg'
 
 import '../assets/styles/menu.scss'
 
