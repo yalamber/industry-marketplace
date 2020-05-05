@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import UserContext from '../../context/user-context';
 import backIcon from '../../assets/img/icon-arrow-back-dark.svg';
 import createRequestBtn from '../../assets/img/createRequest.svg';
-import logo from '../../assets/img/logo.svg';
+import logo from '../../assets/img/griot_logo.svg';
 
 const HeaderWrapper = ({ back, createRequest, handleSidebar, history, isSideBarOpen }) => {
   const { user } = useContext(UserContext);
