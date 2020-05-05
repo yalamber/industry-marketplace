@@ -75,7 +75,7 @@ const Sidebar = ({ badges, currentPage, showMenu, callback, handleConfigModal, i
       </Upper>
       <ModifyConfiguration
         onClick={() => handleAndClose(() => handleConfigModal(true), handleSidebar)}
-        displayMode={domain.startsWith('http://localhost') ? 'flex' : 'none'}
+        displayMode={domain.startsWith('https://marketplace.griot.io') ? 'flex' : 'none'}
       >
         <img src={configIcon} alt="Modify configuration"/>
         <ConfigText>Modify Configurations</ConfigText>

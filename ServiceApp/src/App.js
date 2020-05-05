@@ -24,7 +24,7 @@ class App extends Component {
             ServiceFactory.register('api', () => new ApiClient(config.domain));
 
             this._configuration = config;
-
+            
             this.setState({
                 isBusy: false,
                 status: '',
